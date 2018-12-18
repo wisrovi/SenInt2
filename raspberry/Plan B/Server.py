@@ -11,7 +11,7 @@ class Server:
         req = ""
         if certificados:
             certificadosServidor = "ca.crt"
-            req = requests.post(urlEnviar, verify=certificadosServidor)
+            req = requests.get(urlEnviar, verify=certificadosServidor)
         else:
             req = requests.get(urlEnviar)
         return req

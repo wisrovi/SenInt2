@@ -3,15 +3,18 @@ import os
 
 from perifericos import *
 from Util import *
+servidor = Server("https://paul.fcv.org:8443/Senint2/serverB")
 
 app = Flask(__name__)
-claseUtil = Util()
 
 def procesoApagarAlarma():
     rele.desactivarAlarma()
     
 def procesoPrenderAlarma():
     rele.activarAlarma()
+    
+propiedades = properties()
+claseUtil = Util(servidor, propiedades.NumeroSegundosSinAlarma, rele)
     
 @app.route('/Alarma1/ON', methods=['GET', 'POST'])
 def Alarma1_ON():
@@ -28,6 +31,12 @@ def Alarma1_OFF():
         os.system("rm 1")
     os.system("touch 0")
     return '/Alarma1/OFF'
+
+@app.route('/Correo', methods=['GET', 'POST'])
+def Correo():    
+    humedad, temperatura = sensorDHT22.LeerHumedadTemperatura()
+    servidor.sendGet("?T=" + str(temperatura) + "&H="+str(humedad))
+    return 'Correo'
 
 @app.route('/Sensor', methods=['GET', 'POST'])
 def Sensor():
