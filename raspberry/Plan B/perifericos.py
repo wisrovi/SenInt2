@@ -28,7 +28,7 @@ segundoEnviadoDatosServidorSistemaNormal = propiedades.NumeroSegundosSinAlarma
 
 
 claseUtil = Util(servidor, segundoEnviadoDatosServidorSistemaNormal, rele)
-
+log = LogAuditoria()
 
 def HiloSegundoPlano():
     alarmado = False
@@ -48,6 +48,6 @@ def cicloInfinito(alarmado = False, conteoBien = 0, conteoBien2 = 0, alarmado2 =
     time.sleep(30)
     return alarmado, conteoBien, conteoBien2, alarmado2
 
-claseUtil.LlenarLogAuditoria("******************* Perifericos iniciados *******************")
+log.LlenarLogAuditoria("******************* Perifericos iniciados *******************")
 Thread(target=HiloSegundoPlano).start()
 

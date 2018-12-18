@@ -15,6 +15,7 @@ def procesoPrenderAlarma():
     
 propiedades = properties()
 claseUtil = Util(servidor, propiedades.NumeroSegundosSinAlarma, rele)
+log = LogAuditoria()
     
 @app.route('/Alarma1/ON', methods=['GET', 'POST'])
 def Alarma1_ON():
@@ -69,7 +70,7 @@ def upload_image():
 	<h1>Servidor SENINT2</h1>
     '''
 
-claseUtil.LlenarLogAuditoria("******************* Servidor iniciado *******************")
+log.LlenarLogAuditoria("******************* Servidor iniciado *******************")
 	
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=2019, debug=True)
