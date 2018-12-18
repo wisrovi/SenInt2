@@ -5,3 +5,4 @@ class properties:
     
     TiempoParpadeoAlarmaSilenciosa = 0.5
     NumeroParpadeosAlarmaSilenciosa = 30
+    NumeroSegundosSinAlarma = 480
