@@ -1,3 +1,10 @@
+import time
+
+try:                                                                      
+    from threading import Thread                                          
+except ImportError:                                                       
+    LlenarLogAuditoria("Se requiere el modulo threading")
+
 def BlinkSilencioso():
     alarmaSilenciosa.blink(propiedades.NumeroParpadeosAlarmaSilenciosa, propiedades.TiempoParpadeoAlarmaSilenciosa)
 
